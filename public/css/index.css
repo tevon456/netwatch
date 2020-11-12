@@ -1,0 +1,43 @@
+.php-form {
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 12px;
+  width: 300px;
+  color: #272727;
+}
+
+.php-form > input,
+select {
+  border: 2px solid#000000;
+  padding: 8px;
+  color: #0366d6;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+button {
+  padding: 8px;
+  background: #0366d6;
+  color: #e7e7e7;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 6px;
+  border: none;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.num {
+  color: #0366d6;
+  font-variant-numeric: tabular-nums;
+  font-weight: bold;
+}
+
+section {
+  color: #272727;
+}

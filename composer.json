@@ -1,0 +1,6 @@
+{
+    "require": {
+        "izniburak/router": "^1.5",
+        "bramus/router": "~1.5"
+    }
+}
