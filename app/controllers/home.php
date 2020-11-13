@@ -2,8 +2,8 @@
 
 class Home extends Controller
 {
-    public static function index()
+    public function index($name = '')
     {
-        echo 'Home class method';
+        echo $name;
     }
 }
