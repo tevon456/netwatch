@@ -1,6 +1,5 @@
 {
     "require": {
-        "izniburak/router": "^1.5",
-        "bramus/router": "~1.5"
+        "laminas/laminas-crypt": "^3.3"
     }
 }
