@@ -10,10 +10,22 @@
             <button class="bp3-button bp3-minimal bp3-icon-user"></button>
         </div>
     </nav>
-    <div class="p-8">
-        <div class="bp3-card .modifier">
-            Hello <?= $data['name'] ?>
+    <div class="p-8 mt-4">
+        <div class="grid grid-cols-3 place-items-stretch h-48 ">
+
+            <?php
+            foreach ($data['data'] as $value) {
+                echo
+                    "<div class=' bp3-card m-3'>
+                    <img class='rounded-lg' src='https://source.unsplash.com/MAYsdoYpGuk/500x200'>
+                    <div class='bp3-icon-name'></div>
+                    <a href='#' class='block mt-2 text-lg leading-tight font-semibold text-gray-900 hover:underline'>$value->title</a>
+                    <p class='mt-2 text-gray-600'>$value->description</p>
+                </div>";
+            }
+            ?>
         </div>
     </div>
+</div>
 
-    <div>
+<div>
