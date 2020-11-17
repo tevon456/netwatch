@@ -1,5 +1,10 @@
 {
     "require": {
-        "laminas/laminas-crypt": "^3.3"
+        "laminas/laminas-crypt": "^3.3",
+        "illuminate/database": "^8.14"
+    },"autoload": {
+        "classmap": [
+            "app/models"
+        ]
     }
 }
