@@ -2,11 +2,19 @@
 
 class Home extends Controller
 {
+
     public function index($name = '')
     {
-        $user = $this->model('user');
-        $user->name = $name;
+        $movie = $this->model('movie');
+        $movies = $movie::all();
+        $this->view('home/index', ['data' => $movies]);
+    }
 
-        $this->view('home/index', ['name' => $user->name]);
+    public function create($name = '', $email = '')
+    {
+        User::create([
+            'name' => $name,
+            'email' => $email,
+        ]);
     }
 }
