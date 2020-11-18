@@ -6,6 +6,6 @@ class User extends Eloquent
 {
     protected $primaryKey = 'id';
     protected $fillable = [
-        'name', 'email'
+        'name', 'email', 'password'
     ];
 }
