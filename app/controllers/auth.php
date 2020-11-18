@@ -93,11 +93,7 @@ class Auth extends Controller
 
     public function logout()
     {
-        $req = $_POST;
-        if (isset($req['email'], $req['password'])) {
-            echo $req['email'];
-        } else {
-            $this->view('auth/login');
-        }
+        $this->endUserSession();
+        $this->view('auth/login');
     }
 }
