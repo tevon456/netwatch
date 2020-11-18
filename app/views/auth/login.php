@@ -4,8 +4,8 @@
             <div class="bp3-navbar-heading">Netwatch</div>
         </div>
         <div class="bp3-navbar-group bp3-align-right">
-            <a href="../auth/login" role="button" class="bp3-button bp3-minimal bp3-icon-log-in" tabindex="0">Login</a>
-            <a href="../auth/signup" role="button" class="bp3-button bp3-intent-primary" tabindex="0">Signup</a>
+            <a href="./../auth/login" role="button" class="bp3-button bp3-minimal bp3-icon-log-in" tabindex="0">Login</a>
+            <a href="./../auth/signup" role="button" class="bp3-button bp3-intent-primary" tabindex="0">Signup</a>
         </div>
     </nav>
     <div class="p-8 ">
