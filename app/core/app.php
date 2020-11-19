@@ -6,8 +6,8 @@
  */
 class App
 {
-    protected $controller = 'home';
-    protected $method = 'index';
+    protected $controller = 'auth';
+    protected $method = 'login';
     protected $params = [];
 
     /**
