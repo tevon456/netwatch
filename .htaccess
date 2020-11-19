@@ -10,3 +10,21 @@ RewriteRule ^(.+)$ public/index.php?url=$1 [QSA,L]
 
 RewriteRule ^(.*)$ public/index.php [NC,L]
 ErrorDocument 404 '<body  style="    margin: 0px;    display: flex;    justify-content: center;    align-items: center;    height: 100vh;    background: #ea7317;    font-family: arial;    color: #fff;  ">  <div>    <svg      xmlns="http://www.w3.org/2000/svg"      class="icon icon-tabler icon-tabler-eye"      width="56"      height="56"      viewBox="0 0 24 24"      stroke-width="1.5"      stroke="currentColor"      fill="none"      stroke-linecap="round"      stroke-linejoin="round"    >      <path stroke="none" d="M0 0h24v24H0z" fill="none" />      <circle cx="12" cy="12" r="2" />      <path        d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"      />    </svg>    <h1>404 Not found</h1>    <p>We were unable to find that resource.</p>  </div></body>'
+
+# BROWSER CACHING USING CACHE-CONTROL HEADERS
+<ifModule mod_headers.c> 
+    # One year for image and video files
+    <filesMatch ".(flv|gif|ico|jpg|jpeg|mp4|mpeg|png|svg|swf|webp)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </filesMatch>
+
+    # One month for JavaScript and PDF files
+    <filesMatch ".(js|pdf)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </filesMatch>
+
+    # One week for CSS files
+    <filesMatch ".(css)$">
+        Header set Cache-Control "max-age=604800, public"
+    </filesMatch>
+</ifModule>
