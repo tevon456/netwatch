@@ -10,6 +10,18 @@
         body {
             background-color: #f3f3f3;
         }
+
+        div>.netwatchMenu {
+            display: none;
+            position: absolute;
+            right: 20px;
+            top: 40px;
+
+        }
+
+        div:hover>.netwatchMenu {
+            display: initial;
+        }
     </style>
 </head>
 
