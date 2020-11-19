@@ -54,7 +54,7 @@ class Controller
     /**
      * returns the logged in user's associative array from the global session variable, use isAuthenticated() before running this method to check if there is a user;
      *
-     * @return  array
+     * @return  array name,email
      * 
      * 
      */
@@ -76,6 +76,7 @@ class Controller
      */
     public function isAuthenticated()
     {
+        session_start();
         if (isset($_SESSION['AUTH'])) {
             return true;
         } else {
@@ -85,7 +86,10 @@ class Controller
 
     public function endUserSession()
     {
-        session_unset();
-        session_destroy();
+        if (isset($_SESSION['AUTH'])) {
+            session_unset();
+            session_destroy();
+            header("Location: http://localhost/php/netwatch/auth/login");
+        }
     }
 }
