@@ -4,7 +4,12 @@ use Laminas\Crypt\Password\Bcrypt;
 
 class Auth extends Controller
 {
-
+    public function __construct()
+    {
+        if ($this->isAuthenticated()) {
+            header("Location: http://localhost/php/netwatch/home/index");
+        }
+    }
     public function login()
     {
         $req = $_POST;
@@ -20,16 +25,16 @@ class Auth extends Controller
                 INVALID EMAIL
                 Return callout template with an error message and the signup view
                 */
-                $this->view('templates/callout', ['title' => 'Error', 'body' => 'The email address provided is not valid']);
+                $this->view('templates/callout', ['type' => 'bp3-intent-danger', 'title' => 'Error', 'body' => 'The email address provided is not valid']);
                 $this->view('auth/login');
                 //End script execution.
                 die();
             }
 
             if ($this->authenticate($email, $password)) {
-                //Logic
+                header("Location: http://localhost/php/netwatch/home/index");
             } else {
-                $this->view('templates/callout', ['title' => 'Opps', 'body' => 'Opps']);
+                $this->view('templates/callout', ['type' => 'bp3-intent-danger', 'title' => 'Incorrect credentials', 'body' => 'The email or password provided was incorrect']);
                 $this->view('auth/login');
             }
         } else {
@@ -94,6 +99,5 @@ class Auth extends Controller
     public function logout()
     {
         $this->endUserSession();
-        $this->view('auth/login');
     }
 }
