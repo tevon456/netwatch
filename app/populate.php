@@ -45,7 +45,8 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $bcrypt = new Bcrypt();
     $hashedPassword = $bcrypt->create('password');
-    $sql = "INSERT INTO users VALUES (role,name,email,password) VALUES(1, 'John Snow','admin@admin.com'," . $hashedPassword . ");";
+    $sql =
+        "INSERT INTO users (role,name,email,password) VALUES(1, 'John Snow','admin@admin.com','$hashedPassword');";
     $conn->exec($sql);
 } catch (PDOException $e) {
     echo "<br>" . $e->getMessage();

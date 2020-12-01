@@ -11,6 +11,7 @@ class Account extends Controller
     }
     public function index($name = '')
     {
-        $this->view('home/index', ['user' => $this->authenticatedUser()]);
+        $this->view('templates/navigation', ['user' => $this->authenticatedUser()]);
+        $this->view('account/index', ['user' => $this->authenticatedUser()]);
     }
 }

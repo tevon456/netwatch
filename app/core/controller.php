@@ -40,7 +40,9 @@ class Controller
             //hash and compare provided password to hashed password in DB
             if ($bcrypt->verify($password,  $user->password)) {
                 session_start();
-                $sessionPayload = ['name' => $user->name, 'email' => $user->email];
+                $Role = $this->model('role');
+                $role = $Role::where('id', $user->role)->first();
+                $sessionPayload = ['name' => $user->name, 'email' => $user->email, 'role' => $role->name];
                 $_SESSION['AUTH'] = $sessionPayload;
                 return true;
             } else {
