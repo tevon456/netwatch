@@ -6,7 +6,7 @@ class User extends Eloquent
 {
     protected $primaryKey = 'id';
     protected $fillable = [
-        'name', 'email', 'password', 'role'
+        'name', 'email', 'password', 'role', 'active'
     ];
     protected $attributes = [
         'role' => 5,

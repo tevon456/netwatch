@@ -9,7 +9,7 @@ class Account extends Controller
             header("Location: http://localhost/php/netwatch/auth/login");
         }
     }
-    public function index($name = '')
+    public function index($param = '')
     {
         $this->view('templates/navigation', ['user' => $this->authenticatedUser()]);
         $this->view('account/index', ['user' => $this->authenticatedUser()]);

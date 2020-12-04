@@ -33,6 +33,7 @@ CREATE TABLE role_has_permissions (
 CREATE TABLE users (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         role INT NOT NULL,
+        active BOOLEAN DEFAULT TRUE,
         name VARCHAR(40) NOT NULL,
         email VARCHAR(50) NOT NULL,
         password VARCHAR(70) NOT NULL,

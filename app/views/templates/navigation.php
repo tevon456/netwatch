@@ -15,15 +15,16 @@
 
 
         <?= $_SESSION['AUTH']['role'] == 'admin' ?
-            '<a href="./../home/index" role="button" class="bp3-button bp3-icon-pie-chart" tabindex="0">Reports</a>
+            '<a href="./../report/index" role="button" class="bp3-button bp3-icon-pie-chart" tabindex="0">Reports</a>
             <span class="mr-2"></span>'
             : null ?>
 
 
         <?= $_SESSION['AUTH']['role'] == 'admin' ?
-            '<a href="./../home/index" role="button" class="bp3-button bp3-icon-people" tabindex="0">Users</a>
+            '<a href="./../users/index" role="button" class="bp3-button bp3-icon-people" tabindex="0">Users</a>
             <span class="bp3-navbar-divider"></span>'
             : null ?>
+
 
         <div>
             <a href="./../account/index" role="button" class="bp3-button bp3-minimal bp3-icon-user" tabindex="0" title="">
