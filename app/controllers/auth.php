@@ -31,6 +31,7 @@ class Auth extends Controller
                 die();
             }
 
+            // pass in the provided email and password to be checked
             if ($this->authenticate($email, $password)) {
                 header("Location: http://localhost/php/netwatch/home/index");
             } else {
@@ -46,10 +47,11 @@ class Auth extends Controller
     {
         $req = $_POST;
         //Checks if the values we need are set on the request array
-        if (isset($req['name'], $req['email'], $req['password'])) {
+        if (isset($req['first_name'], $req['last_name'], $req['email'], $req['password'])) {
 
             //Sanitization and setting values
-            $name = filter_var($req['name'], FILTER_SANITIZE_STRING);
+            $first_name = filter_var($req['first_name'], FILTER_SANITIZE_STRING);
+            $last_name = filter_var($req['first_name'], FILTER_SANITIZE_STRING);
             $email = filter_var($req['email'], FILTER_SANITIZE_EMAIL);
             $password = $req['password'];
 
@@ -83,7 +85,8 @@ class Auth extends Controller
 
             //Store the user 
             User::create([
-                'name' => $name,
+                'first_name' => $first_name,
+                'last_name' => $last_name,
                 'email' => $email,
                 'password' => $hashedPassword,
             ]);

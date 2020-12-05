@@ -24,6 +24,11 @@ INSERT INTO
 VALUES
     ('guest');
 
+INSERT INTO
+    roles (name)
+VALUES
+    ('suspended');
+
 # PERMISSIONS
 INSERT INTO
     permissions (name)

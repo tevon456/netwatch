@@ -37,12 +37,17 @@ class Controller
 
         //Check if a user was returned from the query
         if ($user) {
+            if ($user->role == 6) {
+                $this->view('templates/callout', ['type' => 'bp3-intent-danger', 'title' => 'Error', 'body' => 'The email address provided is not valid']);
+                $this->view('auth/login');
+                die();
+            }
             //hash and compare provided password to hashed password in DB
             if ($bcrypt->verify($password,  $user->password)) {
                 session_start();
                 $Role = $this->model('role');
                 $role = $Role::where('id', $user->role)->first();
-                $sessionPayload = ['name' => $user->name, 'email' => $user->email, 'role' => $role->name];
+                $sessionPayload = ['name' => $user->first_name . ' ' . $user->last_name, 'email' => $user->email, 'role' => $role->name];
                 $_SESSION['AUTH'] = $sessionPayload;
                 return true;
             } else {
@@ -73,7 +78,6 @@ class Controller
      * Checks if the user is authenticated
      *
      * @return  bool 
-     * 
      * 
      */
     public function isAuthenticated()

@@ -15,12 +15,23 @@
                 <h3 class="bp3-heading">Signup</h3>
                 <div class="bp3-form-group .modifier">
                     <label class="bp3-label" for="form-group-input">
-                        Name
+                        First Name
                         <span class="bp3-text-muted">(required)</span>
                     </label>
                     <div class="bp3-form-content">
                         <div class="bp3-input-group ">
-                            <input id="name" name="name" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg John Smith" dir="auto" />
+                            <input id="first_name" name="first_name" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg John" dir="auto" />
+                        </div>
+                    </div>
+                </div>
+                <div class="bp3-form-group .modifier">
+                    <label class="bp3-label" for="form-group-input">
+                        Last Name
+                        <span class="bp3-text-muted">(required)</span>
+                    </label>
+                    <div class="bp3-form-content">
+                        <div class="bp3-input-group ">
+                            <input id="last_name" name=last_name" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg Smith" dir="auto" />
                         </div>
                     </div>
                 </div>
@@ -51,4 +62,4 @@
         </div>
     </div>
 
-    <div>
+</div>

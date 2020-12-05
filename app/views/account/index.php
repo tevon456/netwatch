@@ -165,7 +165,7 @@
     <div class="p-8 mt-4">
 
         <div class=' bp3-card m-3'>
-            <h2 class="bp3-heading"><?= $data['user']['name'] ?></h2><span class="bp3-tag bp3-intent-primary mr-4"><?= $data['user']['role'] ?></span>
+            <h2 class="bp3-heading"><?= $data['user']['name']  ?></h2><span class="bp3-tag bp3-intent-primary mr-4"><?= $data['user']['role'] ? '' : 'suspended' ?></span>
             <h4><?= $data['user']['email'] ?><h4>
         </div>
         <div class=' bp3-card m-3'>

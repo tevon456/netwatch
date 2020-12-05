@@ -9,19 +9,19 @@
         <span class="mr-2"></span>
 
         <?php if ($_SESSION['AUTH']['role'] == 'admin' || $_SESSION['AUTH']['role'] == 'data_clerk') {
-            echo '<a href="./../home/index" role="button" class="bp3-button bp3-icon-application" tabindex="0">Dashboard</a>
+            echo '<a href="../dashboard/index" role="button" class="bp3-button bp3-icon-application" tabindex="0">Dashboard</a>
                     <span class="mr-2"></span>';
         }  ?>
 
 
         <?= $_SESSION['AUTH']['role'] == 'admin' ?
-            '<a href="./../report/index" role="button" class="bp3-button bp3-icon-pie-chart" tabindex="0">Reports</a>
+            '<a href="../report/index" role="button" class="bp3-button bp3-icon-pie-chart" tabindex="0">Reports</a>
             <span class="mr-2"></span>'
             : null ?>
 
 
         <?= $_SESSION['AUTH']['role'] == 'admin' ?
-            '<a href="./../users/index" role="button" class="bp3-button bp3-icon-people" tabindex="0">Users</a>
+            '<a href="../users/index" role="button" class="bp3-button bp3-icon-people" tabindex="0">Users</a>
             <span class="bp3-navbar-divider"></span>'
             : null ?>
 
