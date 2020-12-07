@@ -1,7 +1,7 @@
 <?php
 
 use Laminas\Crypt\Password\Bcrypt;
-//Seed our database with our 
+//Seed our database with our data
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -35,7 +35,7 @@ try {
     $sql = file_get_contents("../app/sql/insertData.sql");
     $conn->exec($sql);
 } catch (PDOException $e) {
-    // echo "<br>" . $e->getMessage();
+    echo "<br>" . $e->getMessage();
 }
 $conn = null;
 

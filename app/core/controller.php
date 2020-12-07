@@ -38,7 +38,7 @@ class Controller
         //Check if a user was returned from the query
         if ($user) {
             if ($user->role == 6) {
-                $this->view('templates/callout', ['type' => 'bp3-intent-danger', 'title' => 'Error', 'body' => 'The email address provided is not valid']);
+                $this->view('templates/callout', ['type' => 'bp3-intent-danger', 'title' => 'Error', 'body' => 'This account has been suspended']);
                 $this->view('auth/login');
                 die();
             }
@@ -49,6 +49,7 @@ class Controller
                 $role = $Role::where('id', $user->role)->first();
                 $sessionPayload = ['name' => $user->first_name . ' ' . $user->last_name, 'email' => $user->email, 'role' => $role->name];
                 $_SESSION['AUTH'] = $sessionPayload;
+                setcookie('AUTH', $sessionPayload, time() + (86400 * 30), "/");
                 return true;
             } else {
                 return false;
@@ -95,6 +96,7 @@ class Controller
         if (isset($_SESSION['AUTH'])) {
             session_unset();
             session_destroy();
+            setcookie("AUTH", "", time() - 3600);
             header("Location: http://localhost/php/netwatch/auth/login");
         }
     }

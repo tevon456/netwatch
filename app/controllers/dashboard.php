@@ -2,7 +2,7 @@
 
 use Laminas\Crypt\Password\Bcrypt;
 
-class Users extends Controller
+class Dashboard extends Controller
 {
     public function __construct()
     {
@@ -11,16 +11,18 @@ class Users extends Controller
         if (!$this->isAuthenticated()) {
             header("Location: http://localhost/php/netwatch/auth/login");
         }
-        if (!$_SESSION['AUTH']['role'] == 'admin') {
+        if (!$_SESSION['AUTH']['role'] == 'admin' || !$_SESSION['AUTH']['role'] == 'data_clerk') {
             header("Location: http://localhost/php/netwatch/home/index");
         }
     }
 
     public function index()
     {
-        $users = User::all();
+        $Movie = $this->model('movie');
+        $movies = $Movie::all();
+
         $this->view('templates/navigation', ['user' => $this->authenticatedUser()]);
-        $this->view('user/index', ['data' => $users, 'user' => $this->authenticatedUser()]);
+        $this->view('dashboard/index', ['data' => $movies, 'user' => $this->authenticatedUser()]);
     }
 
     public function create()

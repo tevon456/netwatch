@@ -3,7 +3,28 @@ CREATE TABLE movies (
         title VARCHAR(40) NOT NULL,
         description TEXT,
         thumbnail VARCHAR(50) NOT NULL,
+        year INT,
+        publisher TEXT,
+        category TEXT,
+        country TEXT,
+        duration TEXT,
         trailer TEXT,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE actors (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        first_name VARCHAR(40) NOT NULL,
+        last_name VARCHAR(40) NOT NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE actors_movie (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        actor_id VARCHAR(40) NOT NULL,
+        movie_id VARCHAR(40) NOT NULL,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

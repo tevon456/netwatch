@@ -29,7 +29,7 @@
                         </label>
                         <div class="bp3-form-content">
                             <div class="bp3-input-group ">
-                                <input id="last_name" name=last_name" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg Smith" dir="auto" />
+                                <input id="last_name" name="last_name" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg Smith" dir="auto" />
                             </div>
                         </div>
                     </div>

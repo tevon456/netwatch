@@ -25,7 +25,7 @@
                         </label>
                         <div class="bp3-form-content">
                             <div class="bp3-input-group ">
-                                <input value="<?= $data['data']['last_name'] ?>" id="last_name" name=last_name" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg Smith" dir="auto" />
+                                <input value="<?= $data['data']['last_name'] ?>" id="last_name" name="last_name" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg Smith" dir="auto" />
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         </label>
                         <div class="bp3-form-content">
                             <div class="bp3-select .modifier">
-                                <select name="role">
+                                <select name="role" value="<?= $data['data']['role'] ?>">
                                     <option disabled selected>Choose</option>
                                     <option value="1">Admin</option>
                                     <option value="2">Data Clerk</option>

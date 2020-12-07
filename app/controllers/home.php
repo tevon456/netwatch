@@ -9,7 +9,7 @@ class Home extends Controller
             header("Location: http://localhost/php/netwatch/auth/login");
         }
     }
-    public function index($name = '')
+    public function index($param = '')
     {   //This controls what the user sees on the home page
 
         //load the movie model for using db
