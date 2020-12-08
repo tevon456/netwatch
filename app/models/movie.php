@@ -6,6 +6,6 @@ class Movie extends Eloquent
 {
     protected $primaryKey = 'id';
     protected $fillable = [
-        'title', 'description', 'thumbnail', 'trailer'
+        'title', 'description', 'thumbnail', 'trailer', 'year', 'category', 'country', 'duration', 'publisher'
     ];
 }

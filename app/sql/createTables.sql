@@ -21,10 +21,10 @@ CREATE TABLE actors (
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE actors_movie (
+CREATE TABLE actors_movies (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        actor_id VARCHAR(40) NOT NULL,
-        movie_id VARCHAR(40) NOT NULL,
+        actor_id INT NOT NULL,
+        movie_id INT NOT NULL,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
