@@ -6,7 +6,7 @@
         <div class="p-8 ">
             <div class="flex justify-center">
                 <form id="form" class="php-form" method="post" action="<?php $_PHP_SELF ?>">
-                    <h3 class="bp3-heading">Add Movie</h3>
+                    <h3 class="bp3-heading">Update Movie</h3>
                     <div class="bp3-form-group .modifier">
                         <label class="bp3-label" for="form-group-input">
                             Title
@@ -14,7 +14,7 @@
                         </label>
                         <div class="bp3-form-content">
                             <div class="bp3-input-group ">
-                                <input id="title" name="title" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg John Wick" dir="auto" />
+                                <input value="<?= $data['data']->title ?>" id="title" name="title" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg John Wick" dir="auto" />
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                         </label>
                         <div class="bp3-form-content">
                             <div class="bp3-input-group ">
-                                <textarea id="description" name="description" class="bp3-input .modifier" required style="width: 200px;" placeholder="eg John" dir="auto"></textarea>
+                                <textarea style="height:300px;" id="description" name="description" class="bp3-input .modifier" required style="width: 200px;" placeholder="eg John" dir="auto"><?= $data['data']->description ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         </label>
                         <div class="bp3-form-content">
                             <div class="bp3-input-group ">
-                                <input id="thumbnail" name="thumbnail" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg John" dir="auto" />
+                                <input value="<?= $data['data']->thumbnail ?>" id="thumbnail" name="thumbnail" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg John" dir="auto" />
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                         </label>
                         <div class="bp3-form-content">
                             <div class="bp3-input-group ">
-                                <input id="trailer" name="trailer" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg John" dir="auto" />
+                                <input value="<?= $data['data']->trailer ?>" id="trailer" name="trailer" required type="text" class="bp3-input" style="width: 200px;" placeholder="eg John" dir="auto" />
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                         </label>
                         <div class="bp3-form-content">
                             <div class="bp3-input-group ">
-                                <input id="year" name="year" required type="number" value="2020" min="1920" max="2040" class="bp3-input" style="width: 200px;" placeholder="eg John" dir="auto" />
+                                <input value="<?= $data['data']->year ?>" id="year" name="year" required type="number" value="2020" min="1920" max="2040" class="bp3-input" style="width: 200px;" placeholder="eg John" dir="auto" />
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                         </label>
                         <div class="bp3-form-content">
                             <div class="bp3-input-group ">
-                                <input id="publisher" name="publisher" required type="text" class="bp3-input" style="width: 200px;" dir="auto" />
+                                <input value="<?= $data['data']->publisher ?>" id="publisher" name="publisher" required type="text" class="bp3-input" style="width: 200px;" dir="auto" />
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                             </label>
                             <div class="bp3-form-content">
                                 <div class="bp3-select .modifier">
-                                    <select name="category">
+                                    <select name="category" value="<?= $data['data']->category ?>">
                                         <option disabled selected>Choose</option>
                                         <option value="Comedy">Comedy</option>
                                         <option value="Drama">Drama</option>
@@ -106,23 +106,23 @@
                         </label>
                         <div class="bp3-form-content">
                             <div class="bp3-input-group ">
-                                <input id="country" name="country" required type="text" class="bp3-input" style="width: 200px;" dir="auto" />
+                                <input value="<?= $data['data']->country ?>" id="country" name="country" required type="text" class="bp3-input" style="width: 200px;" dir="auto" />
                             </div>
                         </div>
                     </div>
                     <div class="bp3-form-group ">
                         <label class="bp3-label" for="form-group-input">
                             Duration
-                            <span class="bp3-text-muted">(required)</span>
+                            <span class="bp3-text-muted">(required) in minutes</span>
                         </label>
                         <div class="bp3-form-content">
                             <div class="bp3-input-group ">
-                                <input id="duration" name="duration" required type="number" min="45" class="bp3-input" style="width: 200px;" dir="auto" min='8' />
+                                <input value="<?= $data['data']->duration ?>" id="duration" name="duration" required type="number" min="45" class="bp3-input" style="width: 200px;" dir="auto" min='8' />
                             </div>
                         </div>
                     </div>
 
-                    <div class="bp3-form-group .modifier">
+                    <!-- <div class="bp3-form-group .modifier">
                         <label class="bp3-label" for="form-group-input">
                             Actors
                             <span class="bp3-text-muted">(required) seperate names by comma and only add spcaes between first and last names</span>
@@ -132,9 +132,9 @@
                                 <textarea id="actors" name="actors" class="bp3-input .modifier" placeholder="eg joe sean,hue jin,keen hun" required style="width: 200px;" dir="auto"></textarea>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <button type="submit" class="mt-4 bp3-button .bp3-large bp3-intent-success bp3-icon-add">Submit</button>
+                    <button type="submit" class="mt-4 bp3-button .bp3-large bp3-intent-success bp3-icon-add">Update</button>
                 </form>
             </div>
         </div>

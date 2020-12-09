@@ -50,7 +50,7 @@ try {
     do {
         $sql .= "INSERT INTO actors_movies (actor_id,movie_id) VALUES(" . rand(1, 12) . "," . rand(1, 40) . ");";
         $i++;
-    } while ($i < 50);
+    } while ($i < 90);
 
     $conn->exec($sql);
 } catch (PDOException $e) {

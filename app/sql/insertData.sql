@@ -181,7 +181,7 @@ VALUES
         'Natale Colegrove',
         'Comedy|Drama|Musical',
         'United States',
-        '08hr:84min',
+        0884,
         'http://dummyimage.com/222x128.jpg/cc0000/ffffff'
     );
 
@@ -206,7 +206,7 @@ VALUES
         'Basile Kittles',
         'Children|Comedy|Drama',
         'China',
-        '02hr:52min',
+        0252,
         'http://dummyimage.com/206x111.jpg/5fa2dd/ffffff'
     );
 
@@ -231,7 +231,7 @@ VALUES
         'Stefano Dossett',
         'Comedy|Western',
         'Ukraine',
-        '07hr:43min',
+        0743,
         'http://dummyimage.com/221x231.jpg/ff4444/ffffff'
     );
 
@@ -256,7 +256,7 @@ VALUES
         'Kleon Tryme',
         'Crime|Drama',
         'Costa Rica',
-        '09hr:00min',
+        0900,
         'http://dummyimage.com/132x159.jpg/ff4444/ffffff'
     );
 
@@ -281,7 +281,7 @@ VALUES
         'Dukie Perett',
         'Animation|Sci-Fi',
         'Czech Republic',
-        '04hr:40min',
+        0440,
         'http://dummyimage.com/162x131.jpg/cc0000/ffffff'
     );
 
@@ -306,7 +306,7 @@ VALUES
         'Nickolas Glowach',
         'Comedy|Drama',
         'Vietnam',
-        '03hr:98min',
+        0398,
         'http://dummyimage.com/248x200.jpg/cc0000/ffffff'
     );
 
@@ -331,7 +331,7 @@ VALUES
         'Sanderson Deans',
         'Musical|Romance|Western',
         'China',
-        '05hr:93min',
+        0593,
         'http://dummyimage.com/190x142.jpg/cc0000/ffffff'
     );
 
@@ -356,7 +356,7 @@ VALUES
         'Flory Grime',
         'Horror',
         'Ukraine',
-        '05hr:70min',
+        0570,
         'http://dummyimage.com/185x208.jpg/cc0000/ffffff'
     );
 
@@ -381,7 +381,7 @@ VALUES
         'Andree Samarth',
         'Comedy',
         'China',
-        '04hr:52min',
+        0452,
         'http://dummyimage.com/116x196.jpg/dddddd/000000'
     );
 
@@ -406,7 +406,7 @@ VALUES
         'Emerson Romain',
         'Comedy|Drama',
         'China',
-        '07hr:01min',
+        0701,
         'http://dummyimage.com/121x214.jpg/cc0000/ffffff'
     );
 
@@ -431,7 +431,7 @@ VALUES
         'Cheston Evitts',
         'Crime|Horror|Thriller',
         'Indonesia',
-        '06hr:27min',
+        0627,
         'http://dummyimage.com/102x178.jpg/5fa2dd/ffffff'
     );
 
@@ -456,7 +456,7 @@ VALUES
         'Penelopa Grestie',
         'Adventure|Romance|War',
         'France',
-        '05hr:41min',
+        0541,
         'http://dummyimage.com/201x129.jpg/ff4444/ffffff'
     );
 
@@ -481,7 +481,7 @@ VALUES
         'Carleen Drayton',
         '(no genres listed)',
         'United States',
-        '08hr:76min',
+        0876,
         'http://dummyimage.com/250x160.jpg/cc0000/ffffff'
     );
 
@@ -506,7 +506,7 @@ VALUES
         'Antoinette Frazer',
         'Drama',
         'Mexico',
-        '06hr:42min',
+        0642,
         'http://dummyimage.com/182x217.jpg/dddddd/000000'
     );
 
@@ -531,7 +531,7 @@ VALUES
         'Casandra Gass',
         'Comedy|Drama',
         'Ukraine',
-        '05hr:88min',
+        0588,
         'http://dummyimage.com/163x185.jpg/5fa2dd/ffffff'
     );
 
@@ -556,7 +556,7 @@ VALUES
         'Viviyan McGall',
         'Animation|Horror',
         'China',
-        '07hr:44min',
+        0744,
         'http://dummyimage.com/136x250.jpg/5fa2dd/ffffff'
     );
 
@@ -581,7 +581,7 @@ VALUES
         'Elton Pocock',
         'Action|Adventure|Thriller',
         'France',
-        '05hr:72min',
+        0572,
         'http://dummyimage.com/150x100.jpg/5fa2dd/ffffff'
     );
 
@@ -606,7 +606,7 @@ VALUES
         'Lib Spawton',
         'Comedy|Documentary|Drama',
         'Armenia',
-        '02hr:53min',
+        0253,
         'http://dummyimage.com/233x150.jpg/dddddd/000000'
     );
 
@@ -631,7 +631,7 @@ VALUES
         'Kermit Iacobini',
         'Crime|Mystery|Thriller',
         'China',
-        '03hr:00min',
+        0300,
         'http://dummyimage.com/121x236.jpg/5fa2dd/ffffff'
     );
 
@@ -656,7 +656,7 @@ VALUES
         'Loretta Brinded',
         'Western',
         'Poland',
-        '04hr:51min',
+        0451,
         'http://dummyimage.com/198x246.jpg/cc0000/ffffff'
     );
 
@@ -681,7 +681,7 @@ VALUES
         'Corrina Troup',
         'Drama|Romance',
         'Brazil',
-        '03hr:00min',
+        0300,
         'http://dummyimage.com/211x179.jpg/cc0000/ffffff'
     );
 
@@ -706,7 +706,7 @@ VALUES
         'Charleen Boggon',
         'Horror|Thriller',
         'Estonia',
-        '00hr:00min',
+        0000,
         'http://dummyimage.com/100x236.jpg/ff4444/ffffff'
     );
 
@@ -731,7 +731,7 @@ VALUES
         'Correna Sposito',
         'Drama|Horror',
         'Russia',
-        '07hr:57min',
+        0757,
         'http://dummyimage.com/195x120.jpg/cc0000/ffffff'
     );
 
@@ -756,7 +756,7 @@ VALUES
         'Darice Docket',
         'Adventure|Animation|Children|Comedy',
         'Portugal',
-        '03hr:54min',
+        0354,
         'http://dummyimage.com/200x237.jpg/cc0000/ffffff'
     );
 
@@ -781,7 +781,7 @@ VALUES
         'Bidget Athersmith',
         'Drama',
         'France',
-        '03hr:43min',
+        0343,
         'http://dummyimage.com/173x242.jpg/5fa2dd/ffffff'
     );
 
@@ -806,7 +806,7 @@ VALUES
         'Liesa Neild',
         'Action',
         'Honduras',
-        '06hr:29min',
+        0629,
         'http://dummyimage.com/162x232.jpg/cc0000/ffffff'
     );
 
@@ -831,7 +831,7 @@ VALUES
         'Marlow Whaley',
         'Comedy|Drama',
         'Bulgaria',
-        '00hr:59min',
+        0059,
         'http://dummyimage.com/220x139.jpg/cc0000/ffffff'
     );
 
@@ -856,7 +856,7 @@ VALUES
         'Gaspard Kilkenny',
         'Action|Crime|Drama|Thriller',
         'Indonesia',
-        '02hr:09min',
+        0209,
         'http://dummyimage.com/246x163.jpg/dddddd/000000'
     );
 
@@ -881,7 +881,7 @@ VALUES
         'Josiah Drever',
         'Drama',
         'Puerto Rico',
-        '00hr:95min',
+        0095,
         'http://dummyimage.com/109x115.jpg/cc0000/ffffff'
     );
 
@@ -906,7 +906,7 @@ VALUES
         'Irma Ralphs',
         'Comedy|Drama|Mystery|Thriller',
         'Indonesia',
-        '09hr:02min',
+        0902,
         'http://dummyimage.com/138x236.jpg/dddddd/000000'
     );
 
@@ -931,7 +931,7 @@ VALUES
         'Chucho Fleote',
         'Adventure|Comedy|Crime|Thriller',
         'Indonesia',
-        '09hr:95min',
+        0995,
         'http://dummyimage.com/163x130.jpg/cc0000/ffffff'
     );
 
@@ -956,7 +956,7 @@ VALUES
         'Trstram Caltera',
         'Drama|Musical',
         'China',
-        '07hr:87min',
+        0787,
         'http://dummyimage.com/164x122.jpg/ff4444/ffffff'
     );
 
@@ -981,7 +981,7 @@ VALUES
         'Lorita Lodovichi',
         'Documentary',
         'China',
-        '01hr:34min',
+        0134,
         'http://dummyimage.com/138x212.jpg/dddddd/000000'
     );
 
@@ -1006,7 +1006,7 @@ VALUES
         'Amble Arsey',
         'Children|Horror|Sci-Fi',
         'China',
-        '03hr:80min',
+        0380,
         'http://dummyimage.com/153x135.jpg/dddddd/000000'
     );
 
@@ -1031,7 +1031,7 @@ VALUES
         'Annnora Kohrding',
         'Horror|Sci-Fi',
         'Portugal',
-        '08hr:62min',
+        0862,
         'http://dummyimage.com/102x212.jpg/cc0000/ffffff'
     );
 
@@ -1056,7 +1056,7 @@ VALUES
         'Tedmund Jirik',
         'Adventure|Animation|Children|Comedy|Drama|Musical|Romance',
         'Finland',
-        '08hr:28min',
+        0828,
         'http://dummyimage.com/244x182.jpg/5fa2dd/ffffff'
     );
 
@@ -1081,7 +1081,7 @@ VALUES
         'Dana Cominotti',
         'Drama|Romance',
         'Russia',
-        '00hr:81min',
+        0081,
         'http://dummyimage.com/127x235.jpg/cc0000/ffffff'
     );
 
@@ -1106,7 +1106,7 @@ VALUES
         'Orville Boal',
         'Horror|Thriller',
         'Albania',
-        '01hr:42min',
+        0142,
         'http://dummyimage.com/110x230.jpg/cc0000/ffffff'
     );
 
@@ -1131,7 +1131,7 @@ VALUES
         'Garry Haswell',
         'Drama|Romance',
         'China',
-        '02hr:83min',
+        0283,
         'http://dummyimage.com/150x245.jpg/5fa2dd/ffffff'
     );
 
@@ -1156,7 +1156,7 @@ VALUES
         'Nell Prator',
         'Action|Thriller|War',
         'Philippines',
-        '08hr:76min',
+        0876,
         'http://dummyimage.com/185x138.jpg/5fa2dd/ffffff'
     );
 

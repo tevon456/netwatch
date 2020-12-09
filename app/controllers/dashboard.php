@@ -1,13 +1,15 @@
 <?php
 
 require_once('../app/models/movie.php');
+require_once('../app/models/actor.php');
+require_once('../app/models/actorsMovie.php');
 
 class Dashboard extends Controller
 {
     public function __construct()
     {
         //disable php errors on page 
-        error_reporting(0);
+        // error_reporting(0);
         //if user not a logged in user send to login page
         if (!$this->isAuthenticated()) {
             header("Location: http://localhost/php/netwatch/auth/login");
@@ -49,28 +51,43 @@ class Dashboard extends Controller
             $country = filter_var($req['country'], FILTER_SANITIZE_STRING);
             $duration = filter_var($req['duration'], FILTER_SANITIZE_STRING);
             $publisher = filter_var($req['publisher'], FILTER_SANITIZE_STRING);
-
-            //load the movies, actors and actors_movies models
-            $Movie = $this->model('movie');
-            $Actor = $this->model('actor');
-            $ActorMovies = $this->model('actorsMovie');
+            $actors = filter_var($req['actors'], FILTER_SANITIZE_STRING);
 
             //Store the movie to the database 
-            $movie 
-            $Movie::create([
-                'title' => $title,
-                'description' => $description,
-                'thumbnail' => $thumbnail,
-                'trailer' => $trailer,
-                'year' => $year,
-                'category' => $category,
-                'country' => $country,
-                'duration' => $duration,
-                'publisher' => $publisher,
-            ]);
+            $movie = new Movie;
+            $movie->title = $title;
+            $movie->description = $description;
+            $movie->thumbnail = $thumbnail;
+            $movie->trailer = $trailer;
+            $movie->year = $year;
+            $movie->category = $category;
+            $movie->country = $country;
+            $movie->duration = $duration;
+            $movie->publisher = $publisher;
+            $movie->save();
 
+            //load the movies, actors and actors_movies models
+            $actor = new Actor;
+            $actorMovies = new ActorsMovie;
 
+            //create an array of actors separated by commas
+            $actorArray = explode(',', $actors);
 
+            // for each array entry we save the actor to the actor database
+            foreach ($actorArray as $entry) {
+                //get the first and lastname by splitting each entry by whitespace
+                $name = explode(' ', $entry);
+
+                //save the actor to the databse
+                $actor->first_name = $name[0];
+                $actor->last_name = $name[1];
+                $actor->save();
+
+                //store on the relational table that links actors and movies 
+                $actorMovies->actor_id = $actor->id;
+                $actorMovies->movie_id = $movie->id;
+                $actorMovies->save();
+            }
             header("Location: http://localhost/php/netwatch/dashboard/index");
             die();
         } else {
@@ -80,68 +97,76 @@ class Dashboard extends Controller
 
     public function update($param = '')
     {
-
         $req = $_POST;
-
         //Checks if the values we need are set on the request array
         if (isset($req) && !empty($req)) {
-            print_r($req['role']);
-
             //Sanitization and setting values
-            $first_name = filter_var($req['first_name'], FILTER_SANITIZE_STRING);
-            $last_name = filter_var($req['last_name'], FILTER_SANITIZE_STRING);
-            $email = filter_var($req['email'], FILTER_SANITIZE_EMAIL);
-            $role = $req['role'];
+            $title = filter_var($req['title'], FILTER_SANITIZE_STRING);
+            $description = filter_var($req['description'], FILTER_SANITIZE_STRING);
+            $thumbnail = filter_var($req['thumbnail'], FILTER_SANITIZE_STRING);
+            $trailer = filter_var($req['trailer'], FILTER_SANITIZE_STRING);
+            $year = filter_var($req['year'], FILTER_SANITIZE_STRING);
+            $category = filter_var($req['category'], FILTER_SANITIZE_STRING);
+            $country = filter_var($req['country'], FILTER_SANITIZE_STRING);
+            $duration = filter_var($req['duration'], FILTER_SANITIZE_STRING);
+            $publisher = filter_var($req['publisher'], FILTER_SANITIZE_STRING);
+            // $actors = filter_var($req['actors'], FILTER_SANITIZE_STRING);
 
-            //Perform a query on the email to see if it exist
-            $exists = User::where('email', $email)->get();
-            //Validation
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL) === true) {
-                /* 
-                INVALID EMAIL
-                Return callout template with an error message and the signup view
-                */
-                $this->view('templates/callout', ['title' => 'Error', 'body' => 'The email address provided is not valid']);
-                $this->view('user/update');
-                //End script execution.
-                die();
-            } else if (empty($exists)) {
-                /* 
-                DUPLICATE EMAIL
-                If an email is in use return an error message
-                */
-                $this->view('templates/callout', ['title' => 'Error', 'body' => 'A user with that email already exists']);
-                $this->view('user/update');
-                //End script execution.
-                die();
-            }
+            //load the movies, actors and actors_movies models
+            // $actor = new Actor;
+            // $actorMovies = new ActorsMovie;
 
-            //Store the user 
-            $user = User::find($param);
-            $user->first_name = $first_name;
-            $user->last_name = $last_name;
-            $user->email = $email;
-            $user->role = $role;
-            $user->save();
+            //Store the movie to the database 
+            $movie = Movie::find($param);
+            $movie->title = $title;
+            $movie->description = $description;
+            $movie->thumbnail = $thumbnail;
+            $movie->trailer = $trailer;
+            $movie->year = $year;
+            $movie->category = $category;
+            $movie->country = $country;
+            $movie->duration = $duration;
+            $movie->publisher = $publisher;
+            $movie->save();
 
-            header("Location: http://localhost/php/netwatch/users/index");
+            //IGNORE ACTORS
+            // //create an array of actors separated by commas
+            // $actorArray = explode(',', $actors);
+
+            // // for each array entry we save the actor to the actor database
+            // foreach ($actorArray as $entry) {
+            //     //get the first and lastname by splitting each entry by whitespace
+            //     $name = explode(' ', $entry);
+
+            //     //save the actor to the databse
+            //     $actor->first_name = $name[0];
+            //     $actor->last_name = $name[1];
+            //     $actor->save();
+
+            //     //get the id of the actor we just saved
+            //     $actor->id();
+
+            //     //store on the relational table that links actors and movies 
+            //     $actorMovies->actor_id = $actor->id();;
+            //     $actorMovies->movie_id = $movie->id;
+            //     $actorMovies->save();
+            // }
+
+            header("Location: http://localhost/php/netwatch/dashboard/index");
             die();
         } else {
-            $User = $this->model('user');
-            $user = $User::find($param);
-            $this->view('user/update', ['data' => $user, 'user' => $this->authenticatedUser()]);
+            $movie = Movie::find($param);
+            $this->view('dashboard/update', ['data' => $movie, 'user' => $this->authenticatedUser()]);
         }
     }
 
     public function delete($param)
     {
         //from the delete url get the id as param then load the database models for actors_movies and movies.
-        $Movie = $this->model('movie');
-        $ActorMovies = $this->model('actorsMovie');
 
         //find the movie by the param and the actors_movies by the movie id.
-        $movie = $Movie::find($param);
-        $actormovies = $ActorMovies::where('movie_id', $movie->id)->get();
+        $movie = Movie::find($param);
+        $actormovies = ActorsMovie::where('movie_id', $movie->id)->get();
 
         //delete the records.
         $actormovies->delete();
