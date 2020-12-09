@@ -9,7 +9,7 @@ class Dashboard extends Controller
     public function __construct()
     {
         //disable php errors on page 
-        // error_reporting(0);
+        error_reporting(0);
         //if user not a logged in user send to login page
         if (!$this->isAuthenticated()) {
             header("Location: http://localhost/php/netwatch/auth/login");
@@ -28,7 +28,7 @@ class Dashboard extends Controller
         $ActorMovies = $this->model('actorsMovie');
 
         //select all movies 
-        $movies = $Movie::all();
+        $movies = $Movie::orderBy('updated_at')->get();
 
         //show navigation bar view
         $this->view('templates/navigation', ['user' => $this->authenticatedUser()]);
@@ -110,11 +110,6 @@ class Dashboard extends Controller
             $country = filter_var($req['country'], FILTER_SANITIZE_STRING);
             $duration = filter_var($req['duration'], FILTER_SANITIZE_STRING);
             $publisher = filter_var($req['publisher'], FILTER_SANITIZE_STRING);
-            // $actors = filter_var($req['actors'], FILTER_SANITIZE_STRING);
-
-            //load the movies, actors and actors_movies models
-            // $actor = new Actor;
-            // $actorMovies = new ActorsMovie;
 
             //Store the movie to the database 
             $movie = Movie::find($param);
@@ -129,29 +124,6 @@ class Dashboard extends Controller
             $movie->publisher = $publisher;
             $movie->save();
 
-            //IGNORE ACTORS
-            // //create an array of actors separated by commas
-            // $actorArray = explode(',', $actors);
-
-            // // for each array entry we save the actor to the actor database
-            // foreach ($actorArray as $entry) {
-            //     //get the first and lastname by splitting each entry by whitespace
-            //     $name = explode(' ', $entry);
-
-            //     //save the actor to the databse
-            //     $actor->first_name = $name[0];
-            //     $actor->last_name = $name[1];
-            //     $actor->save();
-
-            //     //get the id of the actor we just saved
-            //     $actor->id();
-
-            //     //store on the relational table that links actors and movies 
-            //     $actorMovies->actor_id = $actor->id();;
-            //     $actorMovies->movie_id = $movie->id;
-            //     $actorMovies->save();
-            // }
-
             header("Location: http://localhost/php/netwatch/dashboard/index");
             die();
         } else {
@@ -160,16 +132,15 @@ class Dashboard extends Controller
         }
     }
 
-    public function delete($param)
+    public function delete($param = '')
     {
-        //from the delete url get the id as param then load the database models for actors_movies and movies.
 
         //find the movie by the param and the actors_movies by the movie id.
         $movie = Movie::find($param);
         $actormovies = ActorsMovie::where('movie_id', $movie->id)->get();
+        ActorsMovie::destroy($actormovies->toArray());
 
-        //delete the records.
-        $actormovies->delete();
+        //delete the movie
         $movie->delete();
 
         //load to movies list dashboard page
