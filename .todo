@@ -1,2 +1,15 @@
-use carbon for session expiry
-separate sql inserts
+carbon to expire session 
+
+search for home 
+
+Plans Table
+- name: standard etc
+- cost: float / double
+
+Subscription
+- plan id: fk
+- user id: fk
+- start date: timestamp
+- end date: timestamp
+- billed : float 
+- cancellation date: timestamp
