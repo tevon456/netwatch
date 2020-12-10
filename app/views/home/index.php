@@ -1,5 +1,13 @@
 <div>
+
     <div class="p-8 mt-4">
+        <div class="bp3-card mb-4">
+            <div class="bp3-input-group .modifier">
+                <span class="bp3-icon bp3-icon-search"></span>
+                <input type="text" class="bp3-input bp3-round bp3-fill" placeholder="Search" />
+                <button class="bp3-button bp3-minimal bp3-intent-primary bp3-icon-arrow-right"></button>
+            </div>
+        </div>
         <?php
         if ($_SESSION['AUTH']['role'] == 'guest') {
             echo '<div class="bp3-non-ideal-state" style="height:80%;">
