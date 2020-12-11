@@ -65,7 +65,10 @@ try {
     $bcrypt = new Bcrypt();
     $hashedPassword = $bcrypt->create('password');
     $sql =
-        "INSERT INTO users (role,first_name,last_name,email,password) VALUES(1, 'John','Snow','admin@admin.com','$hashedPassword');";
+        "
+        INSERT INTO users (role,first_name,last_name,email,password) VALUES(1, 'John','Snow','admin@admin.com','$hashedPassword');
+        INSERT INTO users (role,first_name,last_name,email,password) VALUES(2, 'Tricia','Williams','data@data.com','$hashedPassword');
+        ";
     $conn->exec($sql);
 } catch (PDOException $e) {
     echo "<br>" . $e->getMessage();
