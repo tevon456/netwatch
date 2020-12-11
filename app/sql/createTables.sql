@@ -29,29 +29,17 @@ CREATE TABLE actors_movies (
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE plans (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(40) NOT NULL,
-        cost FLOAT NOT NULL,
-        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE subscriptions (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        plan_id INT NOT NULL,
-        user_id INT NOT NULL,
-        billed FLOAT NOT NULL,
-        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        expired_at TIMESTAMP NOT NULL,
-        grace_period_ends TIMESTAMP NOT NULL,
-        cancelled_at TIMESTAMP NOT NULL,
-        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-
 CREATE TABLE permissions (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(40) NOT NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE plans (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(40) NOT NULL,
+        cost decimal(15, 2) NOT NULL,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -79,6 +67,18 @@ CREATE TABLE users (
         last_name VARCHAR(40) NOT NULL,
         email VARCHAR(50) NOT NULL,
         password VARCHAR(70) NOT NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE subscriptions (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        plan_id INT NOT NULL,
+        user_id INT NOT NULL,
+        billed decimal(15, 2) NOT NULL,
+        expired_at DATETIME,
+        grace_period_ends DATETIME,
+        cancelled_at DATETIME,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

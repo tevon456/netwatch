@@ -1,14 +1,3 @@
-# plans
-INSERT INTO
-    plans (name, cost)
-VALUES
-    ('standard', 10.00);
-
-INSERT INTO
-    plans (name, cost)
-VALUES
-    ('premium', 18.00);
-
 # roles
 INSERT INTO
     roles (name)
@@ -1230,3 +1219,13 @@ insert into
     actors (first_name, last_name)
 values
     ('Lanni', 'Sloane');
+
+INSERT INTO
+    plans (name, cost)
+VALUES
+    ('standard', 10.00);
+
+INSERT INTO
+    plans (name, cost)
+VALUES
+    ('premium', 18.00);
