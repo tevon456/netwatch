@@ -173,8 +173,7 @@
                 <h3 class="bp3-heading">Subscription</h3>
                 <div class="grid">
                     <label class="card">
-                        <input name="plan" class="radio" type="radio" checked>
-
+                        <input name="plan" onchange="TotalBill()" value="standard" class="radio" type="radio" checked>
                         <span class="plan-details">
                             <span class="plan-type">Standard</span>
                             <span class="plan-cost">$10<span class="slash">/</span><abbr class="plan-cycle" title="month">mo</abbr></span>
@@ -183,12 +182,38 @@
                         </span>
                     </label>
                     <label class="card ">
-                        <input name="plan" class="radio" type="radio">
+                        <input name="plan" onchange="TotalBill()" value="premium" class="radio" type="radio">
                         <span class="plan-details" aria-hidden="true">
                             <span class="plan-type">Premium</span>
                             <span class="plan-cost">$18<span class="slash">/</span><span class="plan-cycle">mo</span></span>
                             <span>30 movies</span>
                             <span>4k streaming</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="grid ">
+                    <label class="card mt-3">
+                        <input name="renual" onchange="TotalBill()" value="monthly" class="radio" type="radio" checked>
+                        <span class="plan-details">
+                            <span class="plan-type">Renues</span>
+                            <span class="plan-cost">monthly</span>
+                            <span>cancel anytime</span>
+                        </span>
+                    </label>
+                    <label class="card mt-3">
+                        <input name="renual" onchange="TotalBill()" value="yearly" class="radio" type="radio">
+                        <span class="plan-details" aria-hidden="true">
+                            <span class="plan-type">Renues</span>
+                            <span class="plan-cost">yearly</span>
+                            <span>cancel anytime</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="mt-3 flex justify-center">
+                    <label class="card mt-3">
+                        <span class="plan-details" aria-hidden="true">
+                            <span class="plan-type">Total cost</span>
+                            <span class="plan-cost" id="total">$300.00</span>
                         </span>
                     </label>
                 </div>
@@ -205,5 +230,42 @@
         </div>
     </div>
 </div>
+<script>
+    function TotalBill() {
+        var plans = document.getElementsByName('plan');
+        var renuals = document.getElementsByName('renual');
+        var cost = 0;
+        var multiplier = 0;
+        var total = 0;
+        var plan = '';
+        var renual = '';
+        for (var i = 0, length = plans.length; i < length; i++) {
+            if (plans[i].checked) {
+                plan = plans[i].value;
+                break;
+            }
+        }
+        for (var i = 0, length = renuals.length; i < length; i++) {
+            if (renuals[i].checked) {
+                renual = renuals[i].value;
+                break;
+            }
+        }
+        if (plan === 'standard') {
+            cost = 10.00;
+        } else {
+            cost = 18.00;
+        }
+        if (renual === 'monthly') {
+            multiplier = 1;
+        } else {
+            multiplier = 12;
+        }
+        total = (multiplier * cost);
+        document.getElementById('total').innerHTML = '$' + total;
+    }
 
+
+    console.log(renual, plan);
+</script>
 <div>
