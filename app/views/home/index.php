@@ -1,7 +1,12 @@
+<style>
+    body {
+        background-color: #1a202c;
+    }
+</style>
 <div>
 
     <div class="p-8 mt-4">
-        <div class="bp3-card mb-4">
+        <div class="bp3-card mb-4 bp3-dark">
             <div class="bp3-input-group .modifier">
                 <span class="bp3-icon bp3-icon-search"></span>
                 <input type="text" class="bp3-input bp3-round bp3-fill" placeholder="Search" />
@@ -26,7 +31,7 @@
             echo '<div class="grid grid-cols-3 place-items-stretch h-48 ">';
             foreach ($data['data'] as $value) {
                 echo
-                    "<div class=' bp3-card m-3'>
+                    "<div class=' bp3-card m-3 bp3-dark'>
                     <img class='rounded-lg' src='https://source.unsplash.com/MAYsdoYpGuk/500x200'>
                     <div class='bp3-icon-name'></div>
                     <a href='#' class='block mt-2 text-lg leading-tight font-semibold text-gray-900 hover:underline'>$value->title</a>

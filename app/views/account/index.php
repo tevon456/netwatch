@@ -20,7 +20,7 @@
 
     @media (min-width: 42em) {
         .grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 
@@ -168,33 +168,35 @@
             <h2 class="bp3-heading"><?= $data['user']['name']  ?></h2><span class="bp3-tag bp3-intent-primary mr-4"><?= $data['user']['role'] ? '' : 'suspended' ?></span>
             <h4><?= $data['user']['email'] ?><h4>
         </div>
-        <div class=' bp3-card m-3'>
-            <h3 class="bp3-heading">Subscription</h3>
-            <div class="grid">
-                <label class="card">
-                    <input name="plan" class="radio" type="radio" checked>
+        <form id="form" class="php-form" method="post" action="<?php $_PHP_SELF ?>">
+            <div class=' bp3-card m-3'>
+                <h3 class="bp3-heading">Subscription</h3>
+                <div class="grid">
+                    <label class="card">
+                        <input name="plan" class="radio" type="radio" checked>
 
-                    <span class="plan-details">
-                        <span class="plan-type">Standard</span>
-                        <span class="plan-cost">$10<span class="slash">/</span><abbr class="plan-cycle" title="month">mo</abbr></span>
-                        <span>1 month</span>
-                        <span>20 GB/mo</span>
-                        <span>1080p streaming</span>
-                    </span>
-                </label>
-                <label class="card">
-                    <input name="plan" class="radio" type="radio">
-                    <span class="plan-details" aria-hidden="true">
-                        <span class="plan-type">Premium</span>
-                        <span class="plan-cost">$18<span class="slash">/</span><span class="plan-cycle">mo</span></span>
-                        <span>1 month</span>
-                        <span>30 GB/mo</span>
-                        <span>4k streaming</span>
-                    </span>
-                </label>
+                        <span class="plan-details">
+                            <span class="plan-type">Standard</span>
+                            <span class="plan-cost">$10<span class="slash">/</span><abbr class="plan-cycle" title="month">mo</abbr></span>
+                            <span>20 movies</span>
+                            <span>1080p streaming</span>
+                        </span>
+                    </label>
+                    <label class="card ">
+                        <input name="plan" class="radio" type="radio">
+                        <span class="plan-details" aria-hidden="true">
+                            <span class="plan-type">Premium</span>
+                            <span class="plan-cost">$18<span class="slash">/</span><span class="plan-cycle">mo</span></span>
+                            <span>30 movies</span>
+                            <span>4k streaming</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="mt-3 flex justify-center">
+                    <button type="submit" class="mt-3 bp3-button bp3-intent-primary bp3-large" tabindex="0">Purchase selected subscription</button>
+                </div>
             </div>
-            <a role="button" class="bp3-button bp3-intent-primary bp3-large" :modifier tabindex="0">Purchase selected subscription</a>
-        </div>
+        </form>
         <div class=' bp3-card m-3'>
             <h3 class="bp3-heading">Misc</h3>
             <div class="bp3-button-group .modifier">
