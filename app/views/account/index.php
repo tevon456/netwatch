@@ -213,7 +213,7 @@
                     <label class="card mt-3">
                         <span class="plan-details" aria-hidden="true">
                             <span class="plan-type">Total cost</span>
-                            <span class="plan-cost" id="total">$300.00</span>
+                            <span class="plan-cost" id="total">$0.00</span>
                         </span>
                     </label>
                 </div>
@@ -264,8 +264,5 @@
         total = (multiplier * cost);
         document.getElementById('total').innerHTML = '$' + total;
     }
-
-
-    console.log(renual, plan);
 </script>
 <div>

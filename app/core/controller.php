@@ -2,6 +2,7 @@
 
 
 use Laminas\Crypt\Password\Bcrypt;
+use Carbon\Carbon;
 
 class Controller
 {
@@ -99,5 +100,63 @@ class Controller
             setcookie("AUTH", "", time() - 3600);
             header("Location: http://localhost/php/netwatch/auth/login");
         }
+    }
+
+    /**
+     * creates a subscription and returns an associative array with error and message;
+     * @param email - string user email
+     * @param plan - string standard or premium
+     * @param renunal - string yearly or monthly  
+     * @return  array error,message
+     */
+    public function createSubscription($email, $plan, $renual)
+    {
+        $date = Carbon::now();
+        //select plan from database
+        $plan = Plan::where('name', $plan)->first();
+        $res['error'] = 'plan does not exist';
+
+        //set multiplier based on renual
+        if ($renual == 'yearly') {
+            $multiplier = 12;
+        } else {
+            $multiplier = 1;
+        }
+        // calculate total
+        $total = ($multiplier * $plan->cost);
+
+        $user = User::where('email', $email)->first();
+        $res['error'] = 'user does not exist';
+
+        if (!$this->isSubscribed($email)) {
+            Subscription::create([
+                'plan_id' => $plan->id,
+                'user_id' => $user->id,
+                'billed' => $total,
+                'expired_at' => $date->add($multiplier, 'month'),
+                'cancelled_at' => null,
+            ]);
+            $res['message'] = 'subscription active for $multiplier month(s) billed at $total' . '';
+        } else {
+            $res['message'] = 'this user is already subscribed';
+        }
+        return $res;
+    }
+
+    //returns bool accepts email
+    public function isSubscribed($email)
+    {
+        $user = User::where('email', $email)->first();
+        $current = Subscription::where([['user_id', $user->id], ['expired_at', '>', Carbon::now()], ['cancelled_at', null]])->first();
+        if (empty($current)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    //end the subscription 
+    public function cancelSubscription()
+    {
     }
 }

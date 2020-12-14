@@ -75,10 +75,9 @@ CREATE TABLE subscriptions (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         plan_id INT NOT NULL,
         user_id INT NOT NULL,
-        billed decimal(15, 2) NOT NULL,
+        billed decimal(19, 2) NOT NULL,
         expired_at DATETIME,
-        grace_period_ends DATETIME,
-        cancelled_at DATETIME,
+        cancelled_at DATETIME DEFAULT NULL,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
