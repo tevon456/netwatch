@@ -4,13 +4,27 @@
     }
 </style>
 <div>
+    <script>
+        var query = document.getElementById('bar').value;
 
+        function UpdateQuery() {
+            query = document.getElementById('bar').value;
+        }
+
+        function search() {
+            if (query === undefined) {
+                location.replace("http://localhost/php/netwatch/home/index/");
+            } else {
+                location.replace("http://localhost/php/netwatch/home/index/" + query);
+            }
+        }
+    </script>
     <div class="p-8 mt-4">
         <div class="bp3-card mb-4 bp3-dark">
-            <div class="bp3-input-group .modifier">
+            <div class="bp3-input-group">
                 <span class="bp3-icon bp3-icon-search"></span>
-                <input type="text" class="bp3-input bp3-round bp3-fill" placeholder="Search" />
-                <button class="bp3-button bp3-minimal bp3-intent-primary bp3-icon-arrow-right"></button>
+                <input id="bar" onchange="UpdateQuery()" type="text" class="bp3-input bp3-round bp3-fill" placeholder="Search" />
+                <button onclick="search()" class="bp3-button bp3-minimal bp3-intent-primary bp3-icon-arrow-right"></button>
             </div>
         </div>
         <?php

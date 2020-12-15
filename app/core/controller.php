@@ -63,7 +63,7 @@ class Controller
     /**
      * returns the logged in user's associative array from the global session variable, use isAuthenticated() before running this method to check if there is a user;
      *
-     * @return  array name,email
+     * @return  array name,email,role
      * 
      * 
      */
@@ -109,11 +109,16 @@ class Controller
      * @param renunal - string yearly or monthly  
      * @return  array error,message
      */
-    public function createSubscription($email, $plan, $renual)
+    public function createSubscription($email, $selected_plan, $renual)
     {
+        //if subscribed then skip the logic and return a message
+        if ($this->isSubscribed($email)) {
+            return $res['message'] = 'this user is already subscribed';
+        }
+
         $date = Carbon::now();
         //select plan from database
-        $plan = Plan::where('name', $plan)->first();
+        $plan = Plan::where('name', $selected_plan)->first();
         $res['error'] = 'plan does not exist';
 
         //set multiplier based on renual
@@ -122,13 +127,18 @@ class Controller
         } else {
             $multiplier = 1;
         }
-        // calculate total
+        //calculate total
         $total = ($multiplier * $plan->cost);
 
+        //get the user by email
         $user = User::where('email', $email)->first();
+
+        //response array that is returned
         $res['error'] = 'user does not exist';
 
+        //check if user is not subscribed
         if (!$this->isSubscribed($email)) {
+            //create subscription
             Subscription::create([
                 'plan_id' => $plan->id,
                 'user_id' => $user->id,
@@ -136,6 +146,15 @@ class Controller
                 'expired_at' => $date->add($multiplier, 'month'),
                 'cancelled_at' => null,
             ]);
+
+            //check the plan type and update the user's role to standard or premium subscriber
+            if ($plan->name = 'standard') {
+                $user->role =  3;
+                $user->save();
+            } else {
+                $user->role =  4;
+                $user->save();
+            }
             $res['message'] = 'subscription active for $multiplier month(s) billed at $total' . '';
         } else {
             $res['message'] = 'this user is already subscribed';
@@ -143,10 +162,16 @@ class Controller
         return $res;
     }
 
-    //returns bool accepts email
+    /**
+     * checks if the user by the provided email has an active subscription
+     * @param email - string user email
+     * @return  bool
+     */
     public function isSubscribed($email)
     {
+        //get the user by email
         $user = User::where('email', $email)->first();
+        //check database if the user has an active
         $current = Subscription::where([['user_id', $user->id], ['expired_at', '>', Carbon::now()], ['cancelled_at', null]])->first();
         if (empty($current)) {
             return false;
@@ -155,8 +180,31 @@ class Controller
         }
     }
 
+    //get the logged in user's subscription details if any
+    public function getCurrentUserSubscription()
+    {
+        //get the user by email
+        $user = User::where('email', $this->authenticatedUser()['email'])->first();
+        //check database if the user has an active
+        $current = Subscription::where([['user_id', $user->id], ['expired_at', '>', Carbon::now()], ['cancelled_at', null]])->first();
+        $current->plan = Plan::select('name')->find($current->plan_id);
+        $current->started = Carbon::parse($current->created_at)->toFormattedDateString();
+        $current->expires = Carbon::parse($current->expired_at)->toFormattedDateString();
+        return $current;
+    }
+
     //end the subscription 
     public function cancelSubscription()
     {
+        $user = User::where('email', $this->authenticatedUser()['email'])->first();
+        if ($user->role == 1 || $user->role == 2) {
+            header("Location: http://localhost/php/netwatch/auth/login");
+        }
+        $current = Subscription::where([['user_id', $user->id], ['expired_at', '>', Carbon::now()], ['cancelled_at', null]])->first();
+        $current->cancelled_at = Carbon::now();
+        $current->save();
+        $user->role =  5;
+        $user->save();
+        $this->endUserSession();
     }
 }
