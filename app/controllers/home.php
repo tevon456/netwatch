@@ -46,7 +46,9 @@ class Home extends Controller
         $this->view('home/index', ['data' => $movies, 'user' => $this->authenticatedUser()]);
     }
 
-    public function search($param)
+    public function watch($param)
     {
+        $movie = Movie::find($param);
+        $this->view('home/watch', ['data' => $movie, 'user' => $this->authenticatedUser()]);
     }
 }

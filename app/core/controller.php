@@ -44,6 +44,22 @@ class Controller
                 $this->view('auth/login');
                 die();
             }
+
+            //get info about the subscription for the user whos email is provided
+            $sub = $this->getUserSubscription($email);
+            //check if the property grace exist
+            if ($sub->grace) {
+                //check if fifteen days passed since the expiration of subscription
+                if (Carbon::parse($sub->grace)->isPast()) {
+                    //update user to suspended
+                    $user->role == 6;
+                    $user->save();
+                    //return error message in view template
+                    $this->view('templates/callout', ['type' => 'bp3-intent-danger', 'title' => 'Suspended', 'body' => 'This is due to 15 days passing since your last subscription expired']);
+                    $this->view('auth/login');
+                    die();
+                }
+            }
             //hash and compare provided password to hashed password in DB
             if ($bcrypt->verify($password,  $user->password)) {
                 session_start();
@@ -196,6 +212,20 @@ class Controller
         $current->plan = Plan::select('name')->find($current->plan_id);
         $current->started = Carbon::parse($current->created_at)->toFormattedDateString();
         $current->expires = Carbon::parse($current->expired_at)->toFormattedDateString();
+        $current->grace = Carbon::parse($current->expired_at)->add(15, 'day');
+        return $current;
+    }
+
+    public function getUserSubscription($email)
+    {
+        //get the user by email
+        $user = User::where('email', $email)->first();
+        //check database if the user has an active
+        $current = Subscription::where([['user_id', $user->id], ['expired_at', '>', Carbon::now()], ['cancelled_at', null]])->first();
+        $current->plan = Plan::select('name')->find($current->plan_id);
+        $current->started = Carbon::parse($current->created_at)->toFormattedDateString();
+        $current->expires = Carbon::parse($current->expired_at)->toFormattedDateString();
+        $current->grace = Carbon::parse($current->expired_at)->add(15, 'day');
         return $current;
     }
 

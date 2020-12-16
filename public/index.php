@@ -39,8 +39,11 @@
     <!-- Blueprint packages (note: icons script must come first) -->
     <script src="https://unpkg.com/@blueprintjs/icons@^3.4.0"></script>
     <script src="https://unpkg.com/@blueprintjs/core@^3.10.0"></script>
-    <!-- Bootstrap for modals -->
-
+    <!-- player -->
+    <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <!-- <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script> -->
     <div>
         <?php
         require '../vendor/autoload.php';
