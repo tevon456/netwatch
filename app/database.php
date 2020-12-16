@@ -1,9 +1,10 @@
 <?php
-
+//load the illuminate package 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 $capsule = new Capsule;
 
+// ORM Object relational mapper 
 $capsule->addConnection([
     'driver' => 'mysql',
     'host' => '127.0.0.1',

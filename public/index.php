@@ -39,10 +39,14 @@
     <!-- Blueprint packages (note: icons script must come first) -->
     <script src="https://unpkg.com/@blueprintjs/icons@^3.4.0"></script>
     <script src="https://unpkg.com/@blueprintjs/core@^3.10.0"></script>
+    <!-- Bootstrap for modals -->
+
     <div>
         <?php
         require '../vendor/autoload.php';
+        //load the app initialzer 
         require_once '../app/init.php';
+        //init a new instance of the app class which powers netwatch app
         $app = new App();
         ?>
     </div>

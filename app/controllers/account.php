@@ -27,7 +27,7 @@ class Account extends Controller
                 $this->view('account/index', ['user' => $this->authenticatedUser()]);
             } else {
                 //success
-                $this->view('templates/callout', ['type' => 'bp3-intent-primary', 'title' => 'Active subscriber', 'body' => $res['message']]);
+                $this->view('templates/callout', ['type' => 'bp3-intent-primary', 'title' => 'Active subscriber', 'body' => $res['message'] . '. Be sure to logout and login to your account for changes to take effect.']);
                 $this->view('templates/navigation', ['user' => $this->authenticatedUser()]);
                 $this->view('account/subscribed', ['data' => $this->getCurrentUserSubscription(), 'user' => $this->authenticatedUser()]);
             }

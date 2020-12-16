@@ -38,6 +38,7 @@ class Controller
 
         //Check if a user was returned from the query
         if ($user) {
+
             if ($user->role == 6) {
                 $this->view('templates/callout', ['type' => 'bp3-intent-danger', 'title' => 'Error', 'body' => 'This account has been suspended']);
                 $this->view('auth/login');
@@ -97,7 +98,7 @@ class Controller
         if (isset($_SESSION['AUTH'])) {
             session_unset();
             session_destroy();
-            setcookie("AUTH", "", time() - 3600);
+            // setcookie("AUTH", "", time() - 3600);
             header("Location: http://localhost/php/netwatch/auth/login");
         }
     }
@@ -119,7 +120,9 @@ class Controller
         $date = Carbon::now();
         //select plan from database
         $plan = Plan::where('name', $selected_plan)->first();
-        $res['error'] = 'plan does not exist';
+        if (!$plan) {
+            $res['error'] = 'plan does not exist';
+        }
 
         //set multiplier based on renual
         if ($renual == 'yearly') {
@@ -134,7 +137,10 @@ class Controller
         $user = User::where('email', $email)->first();
 
         //response array that is returned
-        $res['error'] = 'user does not exist';
+        if (!$user) {
+            $res['error'] = 'user does not exist';
+        }
+
 
         //check if user is not subscribed
         if (!$this->isSubscribed($email)) {
