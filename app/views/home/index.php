@@ -41,7 +41,7 @@
             foreach ($data['data'] as $value) {
                 echo
                     "<div class=' bp3-card m-3'>
-                    <img class='rounded-lg' src='https://source.unsplash.com/MAYsdoYpGuk/500x200'>
+                    <img class='rounded-lg' src='https://source.unsplash.com/uXchDIKs4qI/500x200'>
                     <div class='bp3-icon-name'></div>
                     <a href='./../home/watch/$value->id' class='block mt-2 text-lg leading-tight font-semibold text-gray-900 hover:underline'>$value->title</a>
                     <p class='mt-2 text-gray-600'>$value->description</p>
