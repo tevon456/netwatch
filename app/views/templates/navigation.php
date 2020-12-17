@@ -35,8 +35,6 @@
                 </li>
                 <li><a href="./../account/index" role="button" class="bp3-menu-item bp3-icon-layout-circle" tabindex="0">
                         Account</a></li>
-                <li><a href="./../account/history" role="button" class="bp3-menu-item bp3-icon-film" tabindex="0">
-                        History</a></li>
                 <li><a href="./../auth/logout" role="button" class="bp3-menu-item bp3-icon-power" tabindex="0">
                         Signout</a></li>
             </ul>
