@@ -19,10 +19,11 @@
 
     <div class="bp3-card mt-4">
         <div class="p-8 ">
+            <h4 class="bp3-heading">Watched <span class="text-green-500"><?= $data['data']->watch_count ?></span> times</h4>
             <h4 class="bp3-heading">Description</h4>
             <p class="bp3-text-large"><?= $data['data']->description ?></p>
             <h4 class="bp3-heading">Category</h4>
-            <p class="bp3-text-large"><?= $data['data']->category ?></p>
+            <p class="bp3-text-large"><?= $data['data']->category ?> </p>
         </div>
     </div>
 </div>

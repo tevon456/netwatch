@@ -1,5 +1,5 @@
 <?php
-
+require_once('../app/models/watchAnalytic.php');
 class Home extends Controller
 {
     public function __construct()
@@ -48,7 +48,21 @@ class Home extends Controller
 
     public function watch($param)
     {
+        $user = User::where('email', $this->authenticatedUser()['email'])->first();
+        $watch = WatchAnalytic::where([['movie_id', $param], ['user_id', $user->id]])->first();
+        if (!empty($watch)) {
+            $watch->watch_count =  $watch->watch_count + 1;
+            $watch->save();
+        } else {
+            $watch = new WatchAnalytic;
+            $watch->movie_id = $param;
+            $watch->user_id = $user->id;
+            $watch->watch_count =  1;
+            $watch->save();
+        }
+
         $movie = Movie::find($param);
+        $movie->watch_count = $watch->watch_count;
         $this->view('home/watch', ['data' => $movie, 'user' => $this->authenticatedUser()]);
     }
 }

@@ -9,7 +9,7 @@
     </div>
 
     <div class="">
-        <div class="flex justify-between">
+        <div class="flex flex-wrap justify-evenly flex-row">
             <form id="form" class="php-form bp3-card" style="width: 230px;" method="post" action="<?php $_PHP_SELF ?>">
                 <h3 class="bp3-heading">Total users</h3>
                 <p class="text-5xl font-bold text-green-400 tabular-nums">34</p>
@@ -26,7 +26,15 @@
                 <h3 class="bp3-heading">Update user</h3>
                 <p class="text-5xl font-bold text-yellow-500 tabular-nums">34</p>
             </form>
-            <form id="form" class="php-form bp3-card" method="post" action="<?php $_PHP_SELF ?>">
+            <form id="form" class="php-form bp3-card" style="width: 230px; method=" post" action="<?php $_PHP_SELF ?>">
+                <h3 class="bp3-heading">Update user</h3>
+                <p class="text-5xl font-bold text-yellow-500 tabular-nums">34</p>
+            </form>
+            <form id="form" class="php-form bp3-card" style="width: 230px; method=" post" action="<?php $_PHP_SELF ?>">
+                <h3 class="bp3-heading">Update user</h3>
+                <p class="text-5xl font-bold text-yellow-500 tabular-nums">34</p>
+            </form>
+            <form id="form" class="php-form bp3-card" style="width: 230px; method=" post" action="<?php $_PHP_SELF ?>">
                 <h3 class="bp3-heading">Update user</h3>
                 <p class="text-5xl font-bold text-yellow-500 tabular-nums">34</p>
             </form>
