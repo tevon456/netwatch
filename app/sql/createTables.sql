@@ -81,3 +81,12 @@ CREATE TABLE subscriptions (
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE watch_analytics (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        movie_id INT NOT NULL,
+        user_id INT NOT NULL,
+        watch_count INT DEFAULT 0,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
