@@ -2,6 +2,8 @@
 
 use Laminas\Crypt\Password\Bcrypt;
 
+require_once('../app/models/subscription.php');
+
 class Auth extends Controller
 {
     public function __construct()

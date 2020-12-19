@@ -4,6 +4,8 @@
 use Laminas\Crypt\Password\Bcrypt;
 use Carbon\Carbon;
 
+require_once('../app/models/subscription.php');
+require_once('../app/models/plan.php');
 class Controller
 {
     public function model($model)
